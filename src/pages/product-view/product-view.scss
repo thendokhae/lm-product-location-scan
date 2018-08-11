@@ -1,0 +1,36 @@
+page-product-view {
+}
+
+.loc-color {
+  color: #5da913;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  width: 100%;
+  background-color: #e6e6e6;
+  left: 0px;
+}
+
+ion-menu .scroll-content {
+  overflow-y: auto; // or "overflow: auto;"
+}
+
+ion-spinner {
+  background-color: transparent;
+  color: white;
+}
+
+ion-loading.my-loading-class {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    color: white;
+  }
+}
+
+ion-scroll {
+  white-space: nowrap;
+}

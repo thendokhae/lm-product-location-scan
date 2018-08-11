@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar color="merlin">
+    <button ion-button menuToggle icon-only style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()">
+        <ion-icon name="md-home"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card style="border:0px;">
+    <!-- <img src="{{selectedProduct.image_url}}" style="width:60px;height:60px;" /> -->
+    <ion-card-content>
+      <ion-card-title>
+        Scanned Location
+      </ion-card-title>
+      <ion-row>
+        <ion-col col-3>
+          <strong>GRID</strong>
+          <p class="loc-color">{{selectedLocation?.grid_no}}</p>
+        </ion-col>
+        <ion-col col-3>
+          <strong>ISLE</strong>
+          <p class="loc-color">{{selectedLocation?.isle_no}}</p>
+        </ion-col>
+        <ion-col col-3>
+          <strong>SHELF</strong>
+          <p class="loc-color">{{selectedLocation?.shelf_no}}</p>
+        </ion-col>
+        <ion-col col-3>
+          <strong>HEIGHT</strong>
+          <p class="loc-color">{{selectedLocation?.height}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <h3 style="padding-left:10px;padding-right:10px;">PRODUCTS IN THIS LOCATION</h3>
+  <ion-scroll scrollY="true" style="height:330px;" direction="y">
+    <ion-row *ngFor="let product of productList" style="border-bottom: 1px rgba(0, 0, 0, 0.3) solid;">
+      <ion-card style="box-shadow: none;margin-left:0px;margin-right:0px;">
+        <p>{{product.family}}</p>
+        <p>{{product.designation}}</p>
+        <p>Barcode: {{product.ean_code}}</p>
+        <ion-row>
+          <ion-col col-3>
+            <button ion-button block outline round small (click)="deleteProduct(product)" style="background-color:#5DA913;color:white;height: 35px;border-color: #5DA913">Delete</button>
+          </ion-col>
+          <ion-col col-3></ion-col>
+          <ion-col col-3></ion-col>
+          <ion-col col-3>
+            <!-- <button ion-button block outline round small (click)="editProduct(product)" style="background-color:#5DA913;color:white;height: 35px;border-color: #5DA913">Edit</button> -->
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-row>
+  </ion-scroll>
+  <div text-center class="footer" (click)="addProduct()">
+    <ion-row>
+      <button ion-button block outline round icon-start style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">
+        <ion-icon name="md-qr-scanner"></ion-icon>
+        ADD PRODUCT
+      </button>
+      <!-- <button ion-button block outline round (click)="addProduct()" style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">ADD PRODUCT</button> -->
+    </ion-row>
+    <!-- <img src="{{scan}}" text-center style="height: 100px;" (click)="scanItem()"/> -->
+  </div>
+</ion-content>

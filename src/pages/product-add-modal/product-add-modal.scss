@@ -1,0 +1,26 @@
+ion-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  ion-content.content {
+    top: 20%;
+    left: 8%;
+    width: 75%;
+    height: 65% !important;
+    border-radius: 10px;
+    .scroll-content {
+      border-radius: 20px;
+    }
+  }
+}
+
+ion-spinner {
+  background-color: transparent;
+  color: white;
+}
+
+ion-loading.my-loading-class {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    color: white;
+  }
+}

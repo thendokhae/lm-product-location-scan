@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="merlin">
+    <ion-title>Add Product</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding style="background-color: #E6E6E6">
+  <p text-center>Location</p>
+  <ion-row>
+    <ion-col col-3>
+      <strong>GRID</strong>
+      <p class="loc-color">{{gridNo}}</p>
+    </ion-col>
+    <ion-col col-3>
+      <strong>ISLE</strong>
+      <p class="loc-color">{{isleNo}}</p>
+    </ion-col>
+    <ion-col col-3>
+      <strong>SHELF</strong>
+      <p class="loc-color">{{shelfNo}}</p>
+    </ion-col>
+    <ion-col col-3>
+      <strong>HEIGHT</strong>
+      <p class="loc-color">{{height}}</p>
+    </ion-col>
+  </ion-row>
+  <p text-center>Scan a Product to add to this Location</p>
+  <div text-center>
+    <img src="{{scan}}" (click)="scanProduct()" style="width:100px;height:100px;margin-top:2%" />
+  </div>
+  <p text-center>or Enter Product Manually</p>
+  <ion-list>
+    <!-- <ion-item>
+      <ion-label inline>Department :</ion-label>
+      <ion-input type="text" [(ngModel)]="newProduct.dpt"></ion-input>
+    </ion-item> -->
+    <ion-item style="margin-top: 10px;">
+      <ion-label inline>Product Name</ion-label>
+      <ion-input type="text" [(ngModel)]="newProduct.designation"></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 10px;">
+      <ion-label inline>Barcode</ion-label>
+      <ion-input type="text" [(ngModel)]="newProduct.ean_code"></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 10px;">
+      <ion-label inline>price</ion-label>
+      <ion-input type="number" [(ngModel)]="newProduct.price"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block outline round (click)="addProduct()" style="background-color:#5DA913;color:white;height: 50px;font-size:  18px;border-color: #5DA913"
+    [disabled]="!newProduct.designation.length || !newProduct.ean_code.length">{{(newProduct.id)?"UPDATE PRODUCT":"ADD PRODUCT"}}</button>
+  <!-- <a (click)="addProduct()" style="color:white">Add Product</a> -->
+</ion-content>
