@@ -9,7 +9,7 @@ import {
 import { ZBar, ZBarOptions } from "@ionic-native/zbar";
 import { ProductViewPage } from "../product-view/product-view";
 import { ScannedLocationPage } from "../scanned-location/scanned-location";
-import { ProductAddPage } from "../product-add/product-add";
+// import { ProductAddPage } from "../product-add/product-add";
 import { ServiceProvider } from "../../providers/service";
 import { LoginPage } from "../login/login";
 import { CustomModalPage } from "../custom-modal/custom-modal";
@@ -69,9 +69,10 @@ export class HomePage {
               });
             } else {
               let modal = this.modalCtrl.create(CustomModalPage, {
-                buttonText: "TRY AGAIN",
+                buttonText: "OK",
+                from: "location",
                 message: "Location not found",
-                title: "SCAN UNSUCCESSFUL!"
+                title: "LOCATION NOT FOUND!"
               });
               modal.present();
             }
@@ -80,9 +81,10 @@ export class HomePage {
             this.dismissLoading();
             console.log("error " + error);
             let modal = this.modalCtrl.create(CustomModalPage, {
-              buttonText: "TRY AGAIN",
-              message: "Please check your network connection",
-              title: "NETWORK ERROR!"
+              buttonText: "OK",
+              from: "location",
+              message: "Location not found",
+              title: "LOCATION NOT FOUND!"
             });
             modal.present();
           }
@@ -92,9 +94,10 @@ export class HomePage {
         console.log("error " + error); // Error message
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
-            buttonText: "TRY AGAIN",
+            buttonText: "OK",
+            from: "location",
             message: "Barcode unreadable",
-            title: "SCAN UNSUCCESSFUL!"
+            title: "BARCODE UNREADABLE!"
           });
           modal.present();
         }
@@ -129,9 +132,10 @@ export class HomePage {
             this.dismissLoading();
             console.log("error " + error);
             let modal = this.modalCtrl.create(CustomModalPage, {
-              buttonText: "TRY AGAIN",
+              buttonText: "OK",
+              from: "product",
               message: "Item has not been added to the system",
-              title: "SCAN UNSUCCESSFUL!"
+              title: "ITEM HAS NOT BEEN ADDED TO THE SYSTEM!"
             });
             modal.present();
           }
@@ -141,9 +145,10 @@ export class HomePage {
         console.log("error " + error); // Error message
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
-            buttonText: "TRY AGAIN",
+            buttonText: "OK",
+            from: "product",
             message: "Barcode unreadable",
-            title: "SCAN UNSUCCESSFUL!"
+            title: "BARCODE UNREADABLE!"
           });
           modal.present();
         }
@@ -171,7 +176,7 @@ export class HomePage {
         } else {
           this.productCode = "";
           let modal = this.modalCtrl.create(CustomModalPage, {
-            buttonText: "TRY AGAIN",
+            buttonText: "OK",
             message: "Please enter the LM again",
             title: "PRODUCT NOT FOUND!"
           });
@@ -182,7 +187,7 @@ export class HomePage {
         this.dismissLoading();
         this.productCode = "";
         let modal = this.modalCtrl.create(CustomModalPage, {
-          buttonText: "TRY AGAIN",
+          buttonText: "OK",
           message: "Please enter the LM again",
           title: "PRODUCT NOT FOUND!"
         });
@@ -193,7 +198,7 @@ export class HomePage {
 
   addNow() {
     this.screenMode = "scanner";
-    this.navCtrl.push(ProductAddPage, { id: null, ean_code: this.productCode });
+    // this.navCtrl.push(ProductAddPage, { id: null, ean_code: this.productCode });
   }
 
   showLoading() {

@@ -48,7 +48,8 @@ export class CustomModalPage {
   }
 
   dismiss() {
-    if (this.title.toLowerCase() === "try again") {
+    debugger;
+    if (this.buttonText.toLowerCase() === "try again") {
       if (this.from === "location") {
         this.scanLocation();
       } else if (this.from === "product") {
@@ -82,8 +83,9 @@ export class CustomModalPage {
             } else {
               let modal = this.modalCtrl.create(CustomModalPage, {
                 buttonText: "TRY AGAIN",
+                from: "location",
                 message: "Location not found",
-                title: "SCAN UNSUCCESSFUL!"
+                title: "LOCATION NOT FOUND!"
               });
               modal.present();
             }
@@ -93,8 +95,9 @@ export class CustomModalPage {
             console.log("error " + error);
             let modal = this.modalCtrl.create(CustomModalPage, {
               buttonText: "TRY AGAIN",
-              message: "Please check your network connection",
-              title: "NETWORK ERROR!"
+              from: "location",
+              message: "Location not found",
+              title: "LOCATION NOT FOUND!"
             });
             modal.present();
           }
@@ -105,8 +108,9 @@ export class CustomModalPage {
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
             buttonText: "TRY AGAIN",
+            from: "location",
             message: "Barcode unreadable",
-            title: "SCAN UNSUCCESSFUL!"
+            title: "BARCODE UNREADABLE!"
           });
           modal.present();
         }
@@ -141,8 +145,9 @@ export class CustomModalPage {
             console.log("error " + error);
             let modal = this.modalCtrl.create(CustomModalPage, {
               buttonText: "TRY AGAIN",
+              from: "product",
               message: "Item has not been added to the system",
-              title: "SCAN UNSUCCESSFUL!"
+              title: "ITEM HAS NOT BEEN ADDED TO THE SYSTEM!"
             });
             modal.present();
           }
@@ -153,8 +158,9 @@ export class CustomModalPage {
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
             buttonText: "TRY AGAIN",
+            from: "product",
             message: "Barcode unreadable",
-            title: "SCAN UNSUCCESSFUL!"
+            title: "BARCODE UNREADABLE!"
           });
           modal.present();
         }

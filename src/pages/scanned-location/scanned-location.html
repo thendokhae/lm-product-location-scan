@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="merlin">
+  <ion-navbar hideBackButton color="merlin">
     <button ion-button menuToggle icon-only style="display: block !important;">
       <ion-icon name='menu'></ion-icon>
     </button>
@@ -57,14 +57,12 @@
       </ion-card>
     </ion-row>
   </ion-scroll>
-  <div text-center class="footer" (click)="addProduct()">
+  <div text-center class="footer">
     <ion-row>
-      <button ion-button block outline round icon-start style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">
+      <button ion-button block outline round icon-start (click)="addProduct()" style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">
         <ion-icon name="md-qr-scanner"></ion-icon>
         ADD PRODUCT
       </button>
-      <!-- <button ion-button block outline round (click)="addProduct()" style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">ADD PRODUCT</button> -->
     </ion-row>
-    <!-- <img src="{{scan}}" text-center style="height: 100px;" (click)="scanItem()"/> -->
   </div>
 </ion-content>

@@ -9,7 +9,7 @@ import {
 import { Product } from "../../models/product";
 import { Location } from "../../models/location";
 // import { ProductAddPage } from "../product-add/product-add";
-import { LocationAddPage } from "../location-add/location-add";
+// import { LocationAddPage } from "../location-add/location-add";
 import { HomePage } from "../home/home";
 import { ServiceProvider } from "../../providers/service";
 import { ZBar, ZBarOptions } from "@ionic-native/zbar";
@@ -108,7 +108,7 @@ export class ProductViewPage {
                     });
                   } else {
                     let modal = this.modalCtrl.create(CustomModalPage, {
-                      buttonText: "TRY AGAIN",
+                      buttonText: "OK",
                       message: "Location not found",
                       title: "SCAN UNSUCCESSFUL!"
                     });
@@ -119,7 +119,7 @@ export class ProductViewPage {
                   this.dismissLoading();
                   console.log("error " + error);
                   let modal = this.modalCtrl.create(CustomModalPage, {
-                    buttonText: "TRY AGAIN",
+                    buttonText: "OK",
                     message: "Error occured while scanning",
                     title: "SCAN UNSUCCESSFUL!"
                   });
@@ -134,7 +134,7 @@ export class ProductViewPage {
                     this.navCtrl.push(ProductViewPage, { id: data.id });
                   } else {
                     let modal = this.modalCtrl.create(CustomModalPage, {
-                      buttonText: "TRY AGAIN",
+                      buttonText: "OK",
                       message: "Location not found",
                       title: "SCAN UNSUCCESSFUL!"
                     });
@@ -145,7 +145,7 @@ export class ProductViewPage {
                   this.dismissLoading();
                   console.log("error " + error);
                   let modal = this.modalCtrl.create(CustomModalPage, {
-                    buttonText: "TRY AGAIN",
+                    buttonText: "OK",
                     message: "Error occured while scanning",
                     title: "SCAN UNSUCCESSFUL!"
                   });
@@ -155,7 +155,7 @@ export class ProductViewPage {
             } else {
               this.dismissLoading();
               let modal = this.modalCtrl.create(CustomModalPage, {
-                buttonText: "TRY AGAIN",
+                buttonText: "OK",
                 message: "Item has not been added to the system",
                 title: "SCAN UNSUCCESSFUL!"
               });
@@ -164,7 +164,7 @@ export class ProductViewPage {
           },
           error => {
             let modal = this.modalCtrl.create(CustomModalPage, {
-              buttonText: "TRY AGAIN",
+              buttonText: "OK",
               message: "Error occured while scanning",
               title: "SCAN UNSUCCESSFUL!"
             });
@@ -175,7 +175,7 @@ export class ProductViewPage {
       .catch(error => {
         console.log("error " + error); // Error message
         let modal = this.modalCtrl.create(CustomModalPage, {
-          buttonText: "TRY AGAIN",
+          buttonText: "OK",
           message: "Error occured while scanning",
           title: "SCAN UNSUCCESSFUL!"
         });
@@ -257,13 +257,15 @@ export class ProductViewPage {
       .catch(error => {
         console.log(error); // Error message
         this.dismissLoading();
-        let modal = this.modalCtrl.create(CustomModalPage, {
-          buttonText: "TRY AGAIN",
-          from: "location",
-          message: "Error occured while scanning",
-          title: "SCAN UNSUCCESSFUL!"
-        });
-        modal.present();
+        if (error.toLowerCase() !== "cancelled") {
+          let modal = this.modalCtrl.create(CustomModalPage, {
+            buttonText: "OK",
+            from: "location",
+            message: "Error occured while scanning",
+            title: "SCAN UNSUCCESSFUL!"
+          });
+          modal.present();
+        }
       });
   }
 
@@ -290,19 +292,19 @@ export class ProductViewPage {
   }
 
   editLocation(location: Location) {
-    let modal = this.modalCtrl.create(LocationAddPage, {
-      id: this.selectedProduct.id,
-      designation: this.selectedProduct.designation,
-      title: "Edit Location",
-      buttonLabel: "UPDATE",
-      locationId: location.id,
-      gridNo: location.grid_no,
-      isleNo: location.isle_no,
-      shelfNo: location.shelf_no,
-      totalDisplayUnits: location.total_display_units,
-      height: location.height
-    });
-    modal.present();
+    // let modal = this.modalCtrl.create(LocationAddPage, {
+    //   id: this.selectedProduct.id,
+    //   designation: this.selectedProduct.designation,
+    //   title: "Edit Location",
+    //   buttonLabel: "UPDATE",
+    //   locationId: location.id,
+    //   gridNo: location.grid_no,
+    //   isleNo: location.isle_no,
+    //   shelfNo: location.shelf_no,
+    //   totalDisplayUnits: location.total_display_units,
+    //   height: location.height
+    // });
+    // modal.present();
   }
 
   deleteLocation(location: Location) {

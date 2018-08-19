@@ -6,13 +6,13 @@ import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CustomModalPage } from "../pages/custom-modal/custom-modal";
-import { ProductAddModalPage } from "../pages/product-add-modal/product-add-modal";
+// import { ProductAddModalPage } from "../pages/product-add-modal/product-add-modal";
 // import { ProductSearchPage } from "../pages/product-search/product-search";
-import { ConfirmLocationPage } from "../pages/confirm-location/confirm-location";
+// import { ConfirmLocationPage } from "../pages/confirm-location/confirm-location";
 import { ProductViewPage } from "../pages/product-view/product-view";
-import { ProductAddPage } from "../pages/product-add/product-add";
+// import { ProductAddPage } from "../pages/product-add/product-add";
 import { ScannedLocationPage } from "../pages/scanned-location/scanned-location";
-import { LocationAddPage } from "../pages/location-add/location-add";
+// import { LocationAddPage } from "../pages/location-add/location-add";
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -28,18 +28,19 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
     HomePage,
     LoginPage,
     ProductViewPage,
-    ProductAddPage,
+    // ProductAddPage,
     CustomModalPage,
-    ScannedLocationPage,
-    LocationAddPage,
-    ConfirmLocationPage,
-    ProductAddModalPage
+    ScannedLocationPage
+    // LocationAddPage,
+    // ConfirmLocationPage,
+    // ProductAddModalPage
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      navExitApp: false
+      navExitApp: false,
+      pageTransition: "md-transition"
     })
   ],
   bootstrap: [IonicApp],
@@ -48,12 +49,12 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
     HomePage,
     LoginPage,
     ProductViewPage,
-    ProductAddPage,
+    // ProductAddPage,
     CustomModalPage,
-    ScannedLocationPage,
-    LocationAddPage,
-    ConfirmLocationPage,
-    ProductAddModalPage
+    ScannedLocationPage
+    // LocationAddPage,
+    // ConfirmLocationPage,
+    // ProductAddModalPage
   ],
   providers: [
     HttpClientModule,
