@@ -19,8 +19,8 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { ZBar } from "@ionic-native/zbar";
 import { Camera } from "@ionic-native/camera";
 import { ServiceProvider } from "../providers/service";
-import { HttpModule } from "@angular/http";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+// import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -57,14 +57,14 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
     // ProductAddModalPage
   ],
   providers: [
-    HttpClientModule,
+    // HttpClientModule,
     StatusBar,
     SplashScreen,
     ZBar,
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    HttpModule,
-    HttpClient,
+    // HttpModule,
+    // HttpClient,
     ServiceProvider
   ]
 })

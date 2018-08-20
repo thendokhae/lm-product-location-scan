@@ -144,6 +144,7 @@ export class MyApp {
             }
           },
           error => {
+            // console.log(error);
             this.dismissLoading();
             let modal = this.modalCtrl.create(CustomModalPage, {
               buttonText: "TRY AGAIN",
