@@ -8,12 +8,7 @@ import {
 import { HomePage } from "../home/home";
 import { CustomModalPage } from "../custom-modal/custom-modal";
 import { ServiceProvider } from "../../providers/service";
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 @Component({
   selector: "page-login",
   templateUrl: "login.html"

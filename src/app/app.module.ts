@@ -28,10 +28,10 @@ import { HttpClientModule } from "@angular/common/http";
     HomePage,
     LoginPage,
     ProductViewPage,
-    // ProductAddPage,
     CustomModalPage,
     ScannedLocationPage
     // LocationAddPage,
+    // ProductAddPage,
     // ConfirmLocationPage,
     // ProductAddModalPage
   ],
@@ -43,29 +43,26 @@ import { HttpClientModule } from "@angular/common/http";
       pageTransition: "md-transition"
     })
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    LoginPage,
-    ProductViewPage,
-    // ProductAddPage,
-    CustomModalPage,
-    ScannedLocationPage
-    // LocationAddPage,
-    // ConfirmLocationPage,
-    // ProductAddModalPage
-  ],
   providers: [
-    // HttpClientModule,
     StatusBar,
     SplashScreen,
     ZBar,
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    // HttpModule,
-    // HttpClient,
     ServiceProvider
-  ]
+  ],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    ProductViewPage,
+    CustomModalPage,
+    ScannedLocationPage
+    // ProductAddPage,
+    // LocationAddPage,
+    // ConfirmLocationPage,
+    // ProductAddModalPage
+  ],
+  bootstrap: [IonicApp]
 })
 export class AppModule {}

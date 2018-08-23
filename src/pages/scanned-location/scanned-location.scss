@@ -1,23 +1,63 @@
-page-scanned-location {
-}
+page-scanned-location {  
 
-.loc-color {
-  color: #5da913;
-}
+    ion-card.card {
+      height: 123px !important;
+    }
+    .scroll-content {
+      padding-top: 56px; 
+    }
 
-ion-spinner {
-  background-color: transparent;
-  color: white;
-}
+    .product--delete-btn {
+      background-color: #5DA913;
+      color: white;
+      height: 35px;
+      text-align: center;
+      border-color: #5DA913;
+      width: initial;
+    }
+  // ion-content {
+  //   height: 100vh !important;
+  //   max-height: 95vh;
+  //   margin-top: 10vh;    
+  //   // .scanned-location--card {
+  //   //   height: 35% !important;
+  //   // }
+  //   .found-products--scroll{
+  //     max-height: 55% !important;
+  //   }
+  // }
 
-ion-loading.my-loading-class {
-  .loading-wrapper {
-    background: transparent;
-    box-shadow: none;
+  .loc-color {
+    color: #5da913;
+  }
+
+  ion-spinner {
+    background-color: rgba($color: #ccc, $alpha: 0.1);
     color: white;
   }
-}
 
-ion-scroll {
-  white-space: nowrap;
+  ion-loading.my-loading-class {
+    .loading-wrapper {
+      background: rgba($color: #ccc, $alpha: 0.1);
+      box-shadow: none;
+      color: white;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 10vh;
+    padding: 1vh;
+
+      .btn-add-product {
+        border-color: #5DA913;
+        color: #5DA913;
+        height: 8vh;
+        font-size: 18px;
+        max-width: 90%;
+      }
+  }
 }

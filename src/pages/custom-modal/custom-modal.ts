@@ -48,7 +48,6 @@ export class CustomModalPage {
   }
 
   dismiss() {
-    debugger;
     if (this.buttonText.toLowerCase() === "try again") {
       if (this.from === "location") {
         this.scanLocation();

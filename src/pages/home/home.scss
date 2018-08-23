@@ -62,7 +62,7 @@ ion-spinner {
 
 ion-loading.my-loading-class {
   .loading-wrapper {
-    background: transparent;
+    background: rgba($color: #ccc, $alpha: 0.1);
     box-shadow: none;
     color: white;
   }

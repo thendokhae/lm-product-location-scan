@@ -1,36 +1,69 @@
 page-product-view {
-}
+  
+  ion-header{
+    // height: 10vh !important;
+    z-index: 9999;
+  }
 
-.loc-color {
-  color: #5da913;
-}
+  ion-scroll {
+    height: 290px;
+    white-space: nowrap;
+    height: 49vh;
+  }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  height: 65px;
-  width: 100%;
-  background-color: #e6e6e6;
-  left: 0px;
-}
+  .loc-color {
+    color: #5da913;
+  }
 
-ion-menu .scroll-content {
-  overflow-y: auto; // or "overflow: auto;"
-}
+  .footer {
+    position: fixed;
+    bottom: 0;
+    height: 5vh;
+    width: 100vw;
+    background-color: #e6e6e6;
+    left: 0px;
+  }
 
-ion-spinner {
-  background-color: transparent;
-  color: white;
-}
+  ion-menu .scroll-content {
+    overflow-y: auto; // or "overflow: auto;"
+  }
 
-ion-loading.my-loading-class {
-  .loading-wrapper {
-    background: transparent;
-    box-shadow: none;
+  ion-spinner {
+    background-color: transparent;
     color: white;
   }
-}
 
-ion-scroll {
-  white-space: nowrap;
+  ion-loading.my-loading-class {
+    .loading-wrapper {
+      background: transparent;
+      box-shadow: none;
+      color: white;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 10vh;
+    padding: 1vh;
+    
+    .btn-add-location {
+        vertical-align: middle;
+        text-align: center;
+        border-color: #5DA913;
+        color: #5DA913;
+        height: 8vh;
+        font-size: 18px;
+        max-width: 90%;
+
+        img {
+          
+        }
+        span {
+          
+        }
+      }
+  }
 }

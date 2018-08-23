@@ -40,7 +40,7 @@
   <ion-row>
     <h4>LOCATION/S:</h4>
   </ion-row>
-  <ion-scroll scrollY="true" style="height:290px;" direction="y">
+  <ion-scroll scrollY="true" direction="y">
     <ion-row *ngFor="let product of selectedProduct.product_locations" style="border-bottom: 1px rgba(0, 0, 0, 0.3) solid;">
       <ion-col col-3>
         <strong>DEPT</strong>
@@ -67,10 +67,13 @@
     </ion-row> -->
   </ion-scroll>
   <!-- <div text-center > -->
-  <button class="footer" ion-button block outline round icon-start (click)="updateLocation()" style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">
-    <ion-icon name="md-qr-scanner"></ion-icon>
-    ADD LOCATION
-  </button>
+
+  <div text-center class="footer">
+    <button class="btn-add-location" ion-button block outline round icon-start (click)="updateLocation()">
+      <img style="transform: translateX(5rem);" src="assets/imgs/LongIcons/AddLocationLongOutline_3.png" />
+      <span style="transform: translateX(-11rem);">ADD LOCATION</span>
+    </button>
+  </div>
   <!-- <img (click)="scanItem()" src="{{scan}}" text-center style="height: 100px;" /> -->
   <!-- </div> -->
 </ion-content>

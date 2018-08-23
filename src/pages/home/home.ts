@@ -20,13 +20,15 @@ import { CustomModalPage } from "../custom-modal/custom-modal";
   styles: ["home.scss"]
 })
 export class HomePage {
-  logo: string = "assets/imgs/leroy-merlin.png";
-  scan: string = "assets/imgs/scan.png";
-  scanLocationImg: string = "assets/imgs/scan-qr.png";
-  scanProductImg: string = "assets/imgs/scan-barcode.png";
-  screenMode: string = "scanner";
-  productCode: string = "";
-  productNotFound: boolean = false;
+  logo = "assets/imgs/leroy-merlin.png";
+  scan = "assets/imgs/scan.png";
+  // scanLocationImg: string = "assets/imgs/scan-qr.png";
+  // scanProductImg: string = "assets/imgs/scan-barcode.png";
+  scanLocationImg = "assets/imgs/Asset 2@3x.png";
+  scanProductImg = "assets/imgs/Asset 3@3x.png";
+  screenMode = "scanner";
+  productCode = "";
+  productNotFound = false;
   loading: any = null;
 
   constructor(
@@ -43,7 +45,7 @@ export class HomePage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad HomePage");
     this.screenMode = "scanner";
-    this.productNotFound = false;
+    // this.productNotFound = false;
   }
 
   scanLocation() {
@@ -57,11 +59,12 @@ export class HomePage {
     this.zbar
       .scan(options)
       .then(result => {
-        console.log("scanned code", result); // Scanned code
+        console.log("scanned Location code", result); // Scanned code
         this.showLoading();
         this.productCode = result;
         this.service.getLocationByCode(this.productCode).subscribe(
           data => {
+            console.log(`[Home]->ScanLocation:: ${JSON.stringify(data)}`)
             this.dismissLoading();
             if (data != null && data.id != null) {
               this.navCtrl.push(ScannedLocationPage, {
@@ -121,6 +124,7 @@ export class HomePage {
         this.service.getProductByCode(this.productCode).subscribe(
           data => {
             this.dismissLoading();
+            console.log(`Scaned product:: ${JSON.stringify(data)}`)
             if (data != null && data.id != null) {
               this.navCtrl.push(ProductViewPage, { id: data.id });
             } else {
@@ -130,7 +134,7 @@ export class HomePage {
           },
           error => {
             this.dismissLoading();
-            console.log("error " + error);
+            console.log("Scanning product failed::  " + error);
             let modal = this.modalCtrl.create(CustomModalPage, {
               buttonText: "OK",
               from: "product",
@@ -142,7 +146,7 @@ export class HomePage {
         );
       })
       .catch(error => {
-        console.log("error " + error); // Error message
+        console.log("Scanning product failed " + error); // Error message
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
             buttonText: "OK",
@@ -165,12 +169,16 @@ export class HomePage {
 
   searchLocation() {
     if (this.productCode.length == 0) {
+      console.log(`SearchLocation return , no productCode:: ${this.productCode} `);
       return;
     }
     this.showLoading();
+    
+    console.log(`SearchLocation , starting search with product code - ${this.productCode} `);
     this.service.getProductByCode(this.productCode.toString()).subscribe(
       data => {
         this.dismissLoading();
+        console.log(`SearchLocation:: ${JSON.stringify(data)}`);
         if (data != null && data.id != null) {
           this.navCtrl.push(ProductViewPage, { id: data.id });
         } else {
@@ -184,6 +192,7 @@ export class HomePage {
         }
       },
       error => {
+        console.log('SearchLocation error:: ', error);
         this.dismissLoading();
         this.productCode = "";
         let modal = this.modalCtrl.create(CustomModalPage, {
@@ -204,7 +213,7 @@ export class HomePage {
   showLoading() {
     if (!this.loading) {
       this.loading = this.loadingCtrl.create({
-        content: "",
+        content: "Loading",
         showBackdrop: false,
         cssClass: "my-loading-class"
       });

@@ -4,12 +4,6 @@ import { Injectable } from "@angular/core";
 import { Product } from "../models/product";
 import "rxjs/add/operator/map";
 
-/*
-  Generated class for the ServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ServiceProvider {
   baseUrl: string =
@@ -22,13 +16,10 @@ export class ServiceProvider {
   login(username: string, password: string) {
     const headers = new HttpHeaders().set("content-type", "application/json");
 
-    const body = {
-      username: username,
-      password: password
-    };
+    const body = { username, password };
 
     return this.http
-      .post<any>(this.baseUrl + "login", body, { headers: headers })
+      .post<any>(this.baseUrl + "login", body, { headers })
       .map(user => {
         // login successful if there's a token in the response
         if (user && user.token) {
@@ -47,12 +38,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<Product>(this.baseUrl + "product/find?q=" + code, {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get<Product>(this.baseUrl + "product/find?q=" + code, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getProductTypeByCode(code: string) {
@@ -62,12 +51,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<any>(this.baseUrl + "tools/codetype/?lookup_code=" + code, {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get<any>(this.baseUrl + "tools/codetype/?lookup_code=" + code, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getProductsInLocation(code: string) {
@@ -78,27 +65,26 @@ export class ServiceProvider {
     );
     return this.http
       .get<any>(
-        this.baseUrl + "productlocation/products?location_code=" + code,
-        { headers: headers }
-      )
-      .map(product => {
-        return product;
-      });
+        this.baseUrl + "productlocation/products?location_code=" + code, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getLocationByCode(code: string) {
     var token = JSON.parse(localStorage.getItem("activeToken"));
+    console.log(`GetLocationByCode token:: ${JSON.stringify(token)}`)
     var headers = new HttpHeaders().set(
       "Authorization",
       "Bearer " + token.token
     );
     return this.http
-      .get<any>(this.baseUrl + "productlocation/find?location_code=" + code, {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get<any>(this.baseUrl + "productlocation/find?location_code=" + code, { headers })
+    .map(product => {
+      if(!product) console.log('No product: ', JSON.stringify(product));
+      console.log(`[Svc->GetLocationBycode]:: ${JSON.stringify(product)}`);
+      return product;
+    });
   }
 
   getProductById(id: number) {
@@ -108,10 +94,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<Product>(this.baseUrl + "product/" + id, { headers: headers })
-      .map(product => {
-        return product;
-      });
+      .get<Product>(this.baseUrl + "product/" + id, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   updateProduct(product: Product) {
@@ -121,12 +107,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .put(this.baseUrl + "product/" + product.id, product, {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .put(this.baseUrl + "product/" + product.id, product, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   addProduct(product: Product) {
@@ -136,10 +120,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .post(this.baseUrl + "product", product, { headers: headers })
-      .map(product => {
-        return product;
-      });
+      .post(this.baseUrl + "product", product, { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   deleteProductById(product: Product) {
@@ -148,9 +132,7 @@ export class ServiceProvider {
       "Authorization",
       "Bearer " + token.token
     );
-    return this.http.delete(this.baseUrl + "product/" + product.id, {
-      headers: headers
-    });
+    return this.http.delete(this.baseUrl + "product/" + product.id, { headers });
   }
 
   logout() {
@@ -165,12 +147,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get(this.baseUrl + "productlocation/lists?field_name=grid_no", {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get(this.baseUrl + "productlocation/lists?field_name=grid_no", { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getAllIsles() {
@@ -180,12 +160,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get(this.baseUrl + "productlocation/lists?field_name=isle_no", {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get(this.baseUrl + "productlocation/lists?field_name=isle_no", { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getAllHeights() {
@@ -195,12 +173,10 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get(this.baseUrl + "productlocation/lists?field_name=height", {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get(this.baseUrl + "productlocation/lists?field_name=height", { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 
   getAllShelves() {
@@ -210,11 +186,9 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get(this.baseUrl + "productlocation/lists?field_name=shelf_no", {
-        headers: headers
-      })
-      .map(product => {
-        return product;
-      });
+      .get(this.baseUrl + "productlocation/lists?field_name=shelf_no", { headers });
+    // .map(product => {
+    //   return product;
+    // });
   }
 }

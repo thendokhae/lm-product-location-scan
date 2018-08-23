@@ -10,7 +10,8 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+
+<ion-content padding no-scroll no-bounce ion-fixed>
   <ion-card style="border:0px;">
     <!-- <img src="{{selectedProduct.image_url}}" style="width:60px;height:60px;" /> -->
     <ion-card-content>
@@ -38,7 +39,7 @@
     </ion-card-content>
   </ion-card>
   <h3 style="padding-left:10px;padding-right:10px;">PRODUCTS IN THIS LOCATION</h3>
-  <ion-scroll scrollY="true" style="height:330px;" direction="y">
+  <ion-scroll scrollY="true" direction="y">
     <ion-row *ngFor="let product of productList" style="border-bottom: 1px rgba(0, 0, 0, 0.3) solid;">
       <ion-card style="box-shadow: none;margin-left:0px;margin-right:0px;">
         <p>{{product.family}}</p>
@@ -46,7 +47,7 @@
         <p>Barcode: {{product.ean_code}}</p>
         <ion-row>
           <ion-col col-3>
-            <button ion-button block outline round small (click)="deleteProduct(product)" style="background-color:#5DA913;color:white;height: 35px;border-color: #5DA913">Delete</button>
+            <button ion-button block outline round small (click)="deleteProduct(product)" class="product--delete-btn">Delete</button>
           </ion-col>
           <ion-col col-3></ion-col>
           <ion-col col-3></ion-col>
@@ -58,11 +59,10 @@
     </ion-row>
   </ion-scroll>
   <div text-center class="footer">
-    <ion-row>
-      <button ion-button block outline round icon-start (click)="addProduct()" style="border-color:#5DA913;color:#5DA913;height: 50px;font-size:18px;">
-        <ion-icon name="md-qr-scanner"></ion-icon>
-        ADD PRODUCT
-      </button>
-    </ion-row>
+    <button ion-button block outline round icon-start (click)="addProduct()" class="btn-add-product">
+      <!-- <ion-icon name="md-qr-scanner"></ion-icon> -->
+      <img style="transform: translateX(5rem);" src="assets/imgs/LongIcons/AddProductLongOutline_3.png" />
+      <span style="transform: translateX(-9rem);">ADD PRODUCT</span>
+    </button>
   </div>
 </ion-content>
