@@ -6,22 +6,12 @@ page-product-view {
   }
 
   ion-scroll {
-    height: 290px;
     white-space: nowrap;
     height: 49vh;
   }
 
   .loc-color {
     color: #5da913;
-  }
-
-  .footer {
-    position: fixed;
-    bottom: 0;
-    height: 5vh;
-    width: 100vw;
-    background-color: #e6e6e6;
-    left: 0px;
   }
 
   ion-menu .scroll-content {
@@ -42,14 +32,12 @@ page-product-view {
   }
 
   .footer {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    height: 10vh;
-    padding: 1vh;
     
     .btn-add-location {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         vertical-align: middle;
         text-align: center;
         border-color: #5DA913;
@@ -58,12 +46,6 @@ page-product-view {
         font-size: 18px;
         max-width: 90%;
 
-        img {
-          
-        }
-        span {
-          
-        }
       }
   }
 }

@@ -41,51 +41,22 @@ export class ScannedLocationPage {
     this.platform.registerBackButtonAction(() => {
       this.navCtrl.setRoot(HomePage);
     }, 1);
-
-    let l1: Location = { id: 29457, grid_no: 'alsk39a', height: '10m', location: 'Moscow', isle_no: 'No1', shelf_no: 'Shelf1' };
-    let p1: Product = {
-      created_at: Date.now().toString(),
-      sku_code: 'TG9936HH',
-      product_locations: [l1],
-      designation: 'Some Destination',
-      dpt: 1,
-      family: 'Computers',
-      quality_level: 'high',
-      supplier: 'Vladimir Ovsyukov',
-      nb_carc: 29,
-      sd_name: 'Sd name',
-      st_name: 'St name',
-
-      ean_code: 'ke937kd9',
-      id: 994722309,
-      price: 39,
-      product_location: l1
-    }
-    // let p2: Product, p3: Product, p4: Product, p5: Product = p1;
-    let p2: Product = { ...p1 };
-    let p3: Product = { ...p1 };
-    
-    this.productList.push(p1);
-    this.productList.push(p2);
-    this.productList.push(p3);
-    // this.productList.push(p4)
-    // this.productList.push(p5)
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ScannedLocationPage");
     let locCode = this.navParams.get("code");
     console.log(`[ScannedLocationPage->ionViewDidLoad]:: locCode -- ${locCode}`)
-    // this.service
-    //   .getProductsInLocation(locCode)
-    //   .subscribe(data => {
-    //     console.log(`[ScannedLocationPage->ionViewDidLoad]:: svc->GetProductsInThisLoc -- ${JSON.stringify(data)}`)
-    //     this.selectedLocation = data.location;
-    //     if (data.rows.length > 0) {
-    //       this.productList = data.rows;
-    //     }
-    //   });
- 
+    this.service
+      .getProductsInLocation(locCode)
+      .subscribe(data => {
+        console.log(`[ScannedLocationPage->ionViewDidLoad]:: svc->GetProductsInThisLoc -- ${JSON.stringify(data)}`)
+        this.selectedLocation = data.location;
+        if (data.rows.length > 0) {
+          this.productList = data.rows;
+        }
+      });
+
   }
 
   addProduct() {
@@ -111,7 +82,7 @@ export class ScannedLocationPage {
       })
       .catch(error => {
         this.dismissLoading();
-        console.log(error); // Error message
+        console.log(`[ScannedLocationPage->scanIten()]] Error zbar scan :: ${JSON.stringify(error)}`); // Error message
         if (error.toLowerCase() !== "cancelled") {
           let modal = this.modalCtrl.create(CustomModalPage, {
             buttonText: "OK",

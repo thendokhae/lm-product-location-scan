@@ -6,21 +6,20 @@ import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CustomModalPage } from "../pages/custom-modal/custom-modal";
-// import { ProductAddModalPage } from "../pages/product-add-modal/product-add-modal";
-// import { ProductSearchPage } from "../pages/product-search/product-search";
-// import { ConfirmLocationPage } from "../pages/confirm-location/confirm-location";
+
 import { ProductViewPage } from "../pages/product-view/product-view";
-// import { ProductAddPage } from "../pages/product-add/product-add";
 import { ScannedLocationPage } from "../pages/scanned-location/scanned-location";
-// import { LocationAddPage } from "../pages/location-add/location-add";
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { ZBar } from "@ionic-native/zbar";
 import { Camera } from "@ionic-native/camera";
 import { ServiceProvider } from "../providers/service";
-// import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
+import { ProductAddPage } from "../pages/product-add/product-add";
+import { LocationAddPage } from "../pages/location-add/location-add";
+import { ConfirmLocationPage } from "../pages/confirm-location/confirm-location";
+import { ProductAddModalPage } from "../pages/product-add-modal/product-add-modal";
 
 @NgModule({
   declarations: [
@@ -29,11 +28,11 @@ import { HttpClientModule } from "@angular/common/http";
     LoginPage,
     ProductViewPage,
     CustomModalPage,
-    ScannedLocationPage
-    // LocationAddPage,
-    // ProductAddPage,
-    // ConfirmLocationPage,
-    // ProductAddModalPage
+    ScannedLocationPage,
+    LocationAddPage,
+    ProductAddPage,
+    ConfirmLocationPage,
+    ProductAddModalPage
   ],
   imports: [
     HttpClientModule,
@@ -57,11 +56,11 @@ import { HttpClientModule } from "@angular/common/http";
     LoginPage,
     ProductViewPage,
     CustomModalPage,
-    ScannedLocationPage
-    // ProductAddPage,
-    // LocationAddPage,
-    // ConfirmLocationPage,
-    // ProductAddModalPage
+    ScannedLocationPage,
+    ProductAddPage,
+    LocationAddPage,
+    ConfirmLocationPage,
+    ProductAddModalPage
   ],
   bootstrap: [IonicApp]
 })

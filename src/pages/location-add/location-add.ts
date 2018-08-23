@@ -12,13 +12,6 @@ import { ConfirmLocationPage } from "../confirm-location/confirm-location";
 import { ProductViewPage } from "../product-view/product-view";
 import { ServiceProvider } from "../../providers/service";
 
-/**
- * Generated class for the LocationAddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: "page-location-add",
   templateUrl: "location-add.html",

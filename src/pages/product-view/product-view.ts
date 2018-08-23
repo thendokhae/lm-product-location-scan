@@ -52,54 +52,29 @@ export class ProductViewPage {
     private zbar: ZBar,
     private platform: Platform
   ) {
-    // if (this.navParams.get("id") !== null) {
-    //   this.showLoading();
-    //   platform.registerBackButtonAction(() => {
-    //     this.navCtrl.setRoot(HomePage);
-    //   }, 1);
-    //   this.service.getProductById(this.navParams.get("id")).subscribe(
-    //     data => {
-    //       if (data.product_locations.length > 0) {
-    //         data.product_location = data.product_locations[0];
-    //       } else {
-    //         data.product_location = new Location();
-    //       }
-    //       if (data.image_url === null || data.image_url.length === 0) {
-    //         data.image_url = this.cameraImage;
-    //       }
-    //       this.selectedProduct = data;
-    //       this.dismissLoading();
-    //     },
-    //     error => {
-    //       this.dismissLoading();
-    //     }
-    //   );
-    // }
-
-    let l1: Location = {
-      height: '11',
-      id: 1,
-      isle_no: '90f9',
-      grid_no: '399',
-      location: 'Moscow city, start',
-      shelf_no: '12'
-    };
-    let l2 = { ... l1 };
-    let l3 = { ... l1 };
-    let l4 = { ... l1 };
-    let l5 = { ... l1 };
-    let locs = [ l1, l2, l3, l5,l4 ];
-    
-    let p1: Product = {
-      id: 11,
-      image_url: 'https://via.placeholder.com/250x250',
-      dpt: 1,
-      sku_code: '3939ddaf',
-      ean_code: 'AGTA349A',
-      product_locations: locs
-    };
-    
-    this.selectedProduct = p1;
+    if (this.navParams.get("id") !== null) {
+      this.showLoading();
+      platform.registerBackButtonAction(() => {
+        this.navCtrl.setRoot(HomePage);
+      }, 1);
+      this.service.getProductById(this.navParams.get("id")).subscribe(
+        data => {
+          if (data.product_locations.length > 0) {
+            data.product_location = data.product_locations[0];
+          } else {
+            data.product_location = new Location();
+          }
+          if (data.image_url === null || data.image_url.length === 0) {
+            data.image_url = this.cameraImage;
+          }
+          this.selectedProduct = data;
+          this.dismissLoading();
+        },
+        error => {
+          this.dismissLoading();
+        }
+      );
+    }
   }
 
   ionViewDidLoad() {

@@ -6,14 +6,13 @@ import {
   LoadingController
 } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
+import { ZBar, ZBarOptions } from "@ionic-native/zbar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
 import { LoginPage } from "../pages/login/login";
 import { HomePage } from "../pages/home/home";
-import { ZBar, ZBarOptions } from "@ionic-native/zbar";
 import { ProductViewPage } from "../pages/product-view/product-view";
 import { ScannedLocationPage } from "../pages/scanned-location/scanned-location";
-// import { ProductAddPage } from "../pages/product-add/product-add";
 import { ServiceProvider } from "../providers/service";
 import { CustomModalPage } from "../pages/custom-modal/custom-modal";
 
