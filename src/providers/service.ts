@@ -7,7 +7,8 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class ServiceProvider {
   baseUrl: string =
-    "http://productlocator.stg.demo2.confidential.co.za/api/v1/docs/api/v1/";
+    // "http://productlocator.stg.demo2.confidential.co.za/api/v1/docs/api/v1/";
+    "http://productlocator.stg.demo2.confidential.co.za/api/v1/"
 
   constructor(public http: HttpClient) {
     console.log("Hello ServiceProvider Provider");
@@ -80,11 +81,11 @@ export class ServiceProvider {
     );
     return this.http
       .get<any>(this.baseUrl + "productlocation/find?location_code=" + code, { headers })
-    .map(product => {
-      if(!product) console.log('No product: ', JSON.stringify(product));
-      console.log(`[Svc->GetLocationBycode]:: ${JSON.stringify(product)}`);
-      return product;
-    });
+      .map(product => {
+        if (!product) console.log('No product: ', JSON.stringify(product));
+        console.log(`[Svc->GetLocationBycode]:: ${JSON.stringify(product)}`);
+        return product;
+      });
   }
 
   getProductById(id: number) {
