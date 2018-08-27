@@ -15,11 +15,12 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { ZBar } from "@ionic-native/zbar";
 import { Camera } from "@ionic-native/camera";
 import { ServiceProvider } from "../providers/service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ProductAddPage } from "../pages/product-add/product-add";
 import { LocationAddPage } from "../pages/location-add/location-add";
 import { ConfirmLocationPage } from "../pages/confirm-location/confirm-location";
 import { ProductAddModalPage } from "../pages/product-add-modal/product-add-modal";
+import { ApiIntercepter } from "../providers/api.interceptor";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,11 @@ import { ProductAddModalPage } from "../pages/product-add-modal/product-add-moda
     ZBar,
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiIntercepter,
+      multi: true
+    },
     ServiceProvider
   ],
   entryComponents: [

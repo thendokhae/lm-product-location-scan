@@ -39,10 +39,16 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<Product>(this.baseUrl + "product/find?q=" + code, { headers });
-    // .map(product => {
-    //   return product;
-    // });
+      .get<Product>(this.baseUrl + "product/find?q=" + code, { headers })
+      // .map(product => {
+      //   // return  product;
+      //   let p: Product;
+      //   p = {
+      //     ...product
+      //   }
+      //   console.log(`[Svc->GetProductByCode()]:: ${JSON.stringify(p)}`);
+      //   return p;
+      // });
   }
 
   getProductTypeByCode(code: string) {
@@ -52,10 +58,16 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<any>(this.baseUrl + "tools/codetype/?lookup_code=" + code, { headers });
-    // .map(product => {
-    //   return product;
-    // });
+      .get<any>(this.baseUrl + "tools/codetype/?lookup_code=" + code, { headers })
+      // .map(product => {
+      //   // return  product;
+      //   let p: Product;
+      //   p = {
+      //     ...product
+      //   }
+      //   console.log(`[Svc->getProductTypeByCode()]:: ${JSON.stringify(p)}`);
+      //   return p;
+      // });
   }
 
   getProductsInLocation(code: string) {
@@ -66,10 +78,16 @@ export class ServiceProvider {
     );
     return this.http
       .get<any>(
-        this.baseUrl + "productlocation/products?location_code=" + code, { headers });
-    // .map(product => {
-    //   return product;
-    // });
+        this.baseUrl + "productlocation/products?location_code=" + code, { headers })
+      // .map(product => {
+      //   // return  product;
+      //   let p: Product;
+      //   p = {
+      //     ...product
+      //   }
+      //   console.log(`[Svc->getProductsInLocation()]:: ${JSON.stringify(p)}`);
+      //   return p;
+      // });
   }
 
   getLocationByCode(code: string) {
@@ -81,11 +99,11 @@ export class ServiceProvider {
     );
     return this.http
       .get<any>(this.baseUrl + "productlocation/find?location_code=" + code, { headers })
-      .map(product => {
-        if (!product) console.log('No product: ', JSON.stringify(product));
-        console.log(`[Svc->GetLocationBycode]:: ${JSON.stringify(product)}`);
-        return product;
-      });
+      // .map(product => {
+      //   if (!product) console.log('No product: ', JSON.stringify(product));
+      //   console.log(`[Svc->GetLocationBycode]:: ${JSON.stringify(product)}`);
+      //   return product;
+      // });
   }
 
   getProductById(id: number) {
@@ -95,10 +113,17 @@ export class ServiceProvider {
       "Bearer " + token.token
     );
     return this.http
-      .get<Product>(this.baseUrl + "product/" + id, { headers });
-    // .map(product => {
-    //   return product;
-    // });
+      .get<Product>(this.baseUrl + "product/" + id, { headers })
+      // .map(product => {
+      //   // return  product;
+      //   let p: Product;
+      //   p = {
+      //     ...product
+      //   }
+      //   console.log(`[Svc->getProductById()]:: ${JSON.stringify(p)}`);
+      //   return p;
+      // });
+      
   }
 
   updateProduct(product: Product) {

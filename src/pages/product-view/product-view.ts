@@ -93,7 +93,7 @@ export class ProductViewPage {
     this.zbar
       .scan(options)
       .then(result => {
-        console.log("scanned code", result); // Scanned code
+        console.log("scanned code ", result); // Scanned code
         this.showLoading();
         this.productCode = result;
         this.service.getProductTypeByCode(this.productCode).subscribe(
